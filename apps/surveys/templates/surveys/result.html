@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='eng'>
+	<head>
+		<title>Survey Form Result</title>
+	</head>
+	<body>
+		<div id='wrapper'>
+			<div id='top'>
+				<p>Thanks for submitting this form! You have submitted this form {{request.session.count}} times now.</p>
+			</div>
+			<div id='form'>
+				<h3>Submitted Information</h3>
+				<p>Name: {{request.session.name}}</p>
+				<p>Dojo Location: {{request.session.location}}</p>
+				<p>Favorite Langueage: {{request.session.language}}</p>
+				<p>Comment: {{request.session.comment}}</p>
+			</div>
+			<form action='/' method='post'>
+				{% csrf_token %}
+				<button type='submit'>Go Back</button>
+				<!-- <button type='submit'>Reset</button> -->
+			</form>
+			<form action='/reset' method='post'>
+				{% csrf_token %}
+				<button type='submit'>Reset</button>
+			</form>
+			<!-- <a href='/reset'><button>Reset</button></a> -->
+		</div>
+	</body>
+</html>
